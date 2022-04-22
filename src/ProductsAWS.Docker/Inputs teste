@@ -1,0 +1,40 @@
+
+aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name example-queue
+
+aws --endpoint-url=http://localhost:4566 sqs create-queue --queue-name processed-messages
+
+aws --endpoint-url=http://localhost:4566 sqs receive-message --queue-url http://localhost:4566/queue/example-queue --max-number-of-messages 10  
+
+aws --endpoint-url=http://localhost:4566 sqs send-message --queue-url http://localhost:4566/queue/example-queue --message-body "{\"PersonId\":\"mauc10\",\"State\":\"Xbox\",\"Games\":[{\"Name\":\"COD\"},{\"Name\":\"R6\"}]}"
+aws --endpoint-url=http://localhost:4566 sqs send-message --queue-url http://localhost:4566/queue/example-queue --message-body "{\"PersonId\":\"mauc10\",\"State\":\"Xbox\",\"Games\":[{\"Name\":\"COD\"},{\"Name\":\"R6\"}]}"
+aws --endpoint-url=http://localhost:4566 sqs send-message --queue-url http://localhost:4566/queue/example-queue --message-body "{\"PersonId\":\"mauc10\",\"State\":\"Xbox\",\"Games\":[{\"Name\":\"COD\"},{\"Name\":\"R6\"}]}"
+
+aws dynamodb create-table --cli-input-json file://Create-table2.json --endpoint-url http://localhost:4566
+
+
+aws --endpoint-url http://localhost:4566 dynamodb put-item --table-name Player --item '{"UserName": {"S": "mauc10"}, "Plataform": {"S": "Xbox"},"Games":{"S":"[{"Name":"COD"},{"Name":"R6"}]}"}' 
+aws --endpoint-url=http://localhost:4566 dynamodb put-item --table-name Player  --item "{\"PersonId\":{\"S\":\"mauc1\"},\"State\":{\"S\":\"MA\"}, \"FirstName\": {\"S\":\"Alice\"}, \"LastName\": {\"S\":\"Andrews\"}}"
+aws --endpoint-url=http://localhost:4566 dynamodb put-item --table-name Player  --item "{\"PersonId\":{\"S\":\"mauc2\"},\"State\":{\"S\":\"MA\"}, \"FirstName\": {\"S\":\"Ben\"}, \"LastName\": {\"S\":\"Bradley\"}}"
+aws --endpoint-url=http://localhost:4566 dynamodb put-item --table-name Player  --item "{\"PersonId\":{\"S\":\"mauc3\"},\"State\":{\"S\":\"MA\"}, \"FirstName\": {\"S\":\"Colin\"}, \"LastName\": {\"S\":\"Connor\"}, \"MiddleName\": {\"S\":\"Connor\"}}"
+
+aws --endpoint-url=http://localhost:4566 dynamodb scan --table-name People
+aws --endpoint-url=http://localhost:4566 dynamodb delete-table --table-name People
+
+
+aws dynamodb list-tables --endpoint-url http://localhost:4566/
+
+aws dynamodb scan --table-name pedidos --endpoint-url http://localhost:4566/
+
+
+aws dynamodb query --table-name pedidos --key-condition-expression "Artist = :name" --expression-attribute-values '{":name":{"S":"Acme Band"}}' --endpoint-url http://localhost:4566/
+
+
+aws dynamodb get-item --table-name pedidos --key "{\"Id\": {\"S\": \"e6f7923a-0803-479e-a09d-e810f9df1a4b\"}}" --endpoint-url http://localhost:4566/
+
+aws --endpoint-url=http://localhost:4566 dynamodb create-table --table-name Player  --attribute-definitions AttributeName=PersonId,AttributeType=S --key-schema AttributeName=PersonId,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5
+
+
+aws dynamodb create-table --cli-input-json file://Create-table.json --endpoint-url http://localhost:4566
+
+
+	
