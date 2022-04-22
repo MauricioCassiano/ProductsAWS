@@ -1,0 +1,27 @@
+{
+  "TableName": "Player",
+  "KeySchema": [
+    {
+      "AttributeName": "PersonId",
+      "KeyType": "HASH"
+    },
+	{
+      "AttributeName": "State",
+      "KeyType": "RANGE"
+    }
+  ],
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "PersonId",
+      "AttributeType": "S"
+    },
+	    {
+      "AttributeName": "State",
+      "AttributeType": "S"
+    }
+  ],
+  "ProvisionedThroughput": {
+    "ReadCapacityUnits": 5,
+    "WriteCapacityUnits": 5
+  }
+}

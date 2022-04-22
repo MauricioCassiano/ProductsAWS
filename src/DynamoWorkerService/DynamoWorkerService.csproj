@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>dotnet-DynamoWorkerService-0CA6BDFC-6585-4C62-A4BD-6C8687D9DF22</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.2" />
+    <PackageReference Include="AWSSDK.SQS" Version="3.7.2.46" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProductsAWS.Domain\ProductsAWS.Domain.csproj" />
+    <ProjectReference Include="..\ProductsAWS.Infra.IoC\ProductsAWS.Infra.IoC.csproj" />
+  </ItemGroup>
+</Project>
